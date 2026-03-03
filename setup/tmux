@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-source ./util
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
+
+source "$SCRIPT_DIR/util"
 
 packages=(
     "tmux"
@@ -8,4 +11,5 @@ packages=(
 
 install_packages "${packages[@]}"
 
-ln -s "$(pwd)/tmux" "$HOME/.config/tmux"
+create_symlink "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+create_symlink "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"

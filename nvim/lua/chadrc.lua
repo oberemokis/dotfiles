@@ -1,15 +1,12 @@
 local M = {}
 
-local utils = require "nvchad.stl.utils"
-
 M.ui = {
-  theme = "monochrome",
+  theme = "doomchad",
   transparency = false,
 
   statusline = {
-    theme = "minimal", -- default | vscode | vscode_colored | minimal
+    theme = "vscode", -- default | vscode | vscode_colored | minimal
     order = {
-      -- "mode",
       "git",
       "%=",
       "diagnostics",

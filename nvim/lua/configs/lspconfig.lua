@@ -15,30 +15,25 @@ end
 
 -- typescript | javascript | vue
 lspconfig.tsserver.setup {
-  on_attach = function(client, bufnr)
-    if vim.bo[bufnr].filetype == "vue" then
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
-      on_attach(client, bufnr)
-    end
-  end,
-  on_init = on_init,
-  capabilities = capabilities,
+  -- on_init = on_init,
+  -- capabilities = capabilities,
   init_options = {
     plugins = {
       {
         name = "@vue/typescript-plugin",
-        location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+        location = vim.fn.expand("~/.nvm/versions/node/v22.8.0/lib/node_modules/@vue/language-server"),
         languages = { "javascript", "typescript", "vue" },
       },
     },
   },
   filetypes = {
     "javascript",
-    "typescript",
-    "vue",
-    "typescriptreact",
     "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "vue",
   },
 }
 
@@ -84,7 +79,7 @@ lspconfig.jdtls.setup {
 }
 
 -- vue
-lspconfig.volar.setup {
+require 'lspconfig'.volar.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
@@ -102,7 +97,7 @@ lspconfig.eslint.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
-  root_dir = require("lspconfig").util.root_pattern("eslint.config.js", ".eslintrc.js", ".eslintrc.json", ".eslintrc"),
+  root_dir = require("lspconfig").util.root_pattern("eslint.config.js", ".eslintrc.js", ".eslintrc.json", ".eslintrc", "eslint.config.mjs"),
 }
 
 -- json | jsonc

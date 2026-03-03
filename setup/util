@@ -41,3 +41,24 @@ install_apps() {
     _install_brew || return 1
     _install_missing_items "brew install --cask" "$@"
 }
+
+create_symlink() {
+    local src="$1"
+    local dst="$2"
+
+    mkdir -p "$(dirname "$dst")"
+
+    if [ -L "$dst" ]; then
+        if [ "$(readlink "$dst")" = "$src" ]; then
+            echo "  Already linked: $dst"
+            return 0
+        fi
+        rm "$dst"
+    elif [ -e "$dst" ]; then
+        echo "  Backing up: $dst -> $dst.bak"
+        mv "$dst" "$dst.bak"
+    fi
+
+    ln -s "$src" "$dst"
+    echo "  Linked: $dst -> $src"
+}

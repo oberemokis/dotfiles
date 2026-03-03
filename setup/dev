@@ -5,8 +5,8 @@ source ./util
 packages=(
     "git"
     "lazygit"
-    "lazynpm"
-    "lazydocker"
+    "jesseduffield/lazynpm/lazynpm"
+    "jesseduffield/lazydocker/lazydocker"
 )
 
 install_packages "${packages[@]}"

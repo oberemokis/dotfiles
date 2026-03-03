@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-source ./util
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
+
+source "$SCRIPT_DIR/util"
 
 packages=(
     "neovim"
@@ -8,4 +11,4 @@ packages=(
 
 install_packages "${packages[@]}"
 
-ln -s "$(pwd)/nvim" "$HOME/.config/nvim"
+create_symlink "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"

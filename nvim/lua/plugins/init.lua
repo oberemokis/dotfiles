@@ -161,6 +161,8 @@ return {
             never_show = {
               ".DS_Store",
               "thumbs.db",
+              "desktop.ini",
+              "*.wt"
             },
           },
         },

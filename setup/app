@@ -17,6 +17,9 @@ packages=(
     "rectangle"
     "discord"
     "figma"
+    "font-jetbrains-mono"
+    "obsidian"
+    "github"
 )
 
 install_apps "${packages[@]}"
