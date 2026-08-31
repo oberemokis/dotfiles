@@ -1,7 +1,7 @@
 local M = {}
 
 M.ui = {
-  theme = "doomchad",
+  theme = "opencode",
   transparency = false,
 
   statusline = {
