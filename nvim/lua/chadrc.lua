@@ -1,5 +1,9 @@
 local M = {}
 
+M.lsp = {
+  signature = false,
+}
+
 M.base46 = {
   theme = "opencode",
   transparency = false,
