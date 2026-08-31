@@ -1,31 +1,8 @@
 local M = {}
 
-M.ui = {
+M.base46 = {
   theme = "opencode",
   transparency = false,
-
-  statusline = {
-    theme = "vscode", -- default | vscode | vscode_colored | minimal
-    order = {
-      "git",
-      "%=",
-      "diagnostics",
-    },
-  },
-
-  telescope = {
-    style = "borderless", -- borderless | bordered
-  },
-
-  cmp = {
-    icons = true,
-    lspkind_text = true,
-    style = "flat_light", -- default | flat_light | atom | atom_colored
-  },
-
-  tabufline = {
-    order = { "treeOffset", "buffers", "tabs" },
-  },
 
   -- Color palette:
   -- --------------
@@ -144,6 +121,32 @@ M.ui = {
       },
     },
   },
+}
+
+M.ui = {
+  statusline = {
+    enabled = true,
+    theme = "vscode", -- default | vscode | vscode_colored | minimal
+    order = {
+      "git",
+      "%=",
+      "diagnostics",
+    },
+  },
+
+  telescope = {
+    style = "borderless", -- borderless | bordered
+  },
+
+  cmp = {
+    icons = true,
+    lspkind_text = true,
+    style = "flat_light", -- default | flat_light | atom | atom_colored
+  },
+
+  tabufline = {
+    order = { "treeOffset", "buffers", "tabs" },
+  },
 
   nvdash = {
     load_on_startup = false,
@@ -152,12 +155,12 @@ M.ui = {
       "          ૮₍ ˶• ༝ •˶ ₎ა          ",
     },
     buttons = {
-      { "  Find File", "Spc f f", "Telescope find_files" },
+      { "  Find File", "Spc f f", "Telescope find_files" },
       { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
       { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Bookmarks", "Spc m a", "Telescope marks" },
-      { "  Themes", "Spc t h", "Telescope themes" },
-      { "  Mappings", "Spc c h", "NvCheatsheet" },
+      { "  Bookmarks", "Spc m a", "Telescope marks" },
+      { "  Themes", "Spc t h", "Telescope themes" },
+      { "  Mappings", "Spc c h", "NvCheatsheet" },
     },
   },
 }
