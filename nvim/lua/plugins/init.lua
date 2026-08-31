@@ -15,6 +15,44 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    init = function()
+      local query = require "vim.treesitter.query"
+
+      local legacy = {
+        ["nth?"] = true,
+        ["is?"] = true,
+        ["kind-eq?"] = true,
+        ["set-lang-from-mimetype!"] = true,
+        ["set-lang-from-info-string!"] = true,
+        ["downcase!"] = true,
+      }
+
+      local function first_node_per_capture(match)
+        local flat = {}
+
+        for id, nodes in pairs(match) do
+          flat[id] = type(nodes) == "table" and nodes[1] or nodes
+        end
+
+        return flat
+      end
+
+      for _, add in ipairs { "add_predicate", "add_directive" } do
+        local original_add = query[add]
+
+        query[add] = function(name, handler, opts)
+          if legacy[name] then
+            local original_handler = handler
+
+            handler = function(match, ...)
+              return original_handler(first_node_per_capture(match), ...)
+            end
+          end
+
+          return original_add(name, handler, opts)
+        end
+      end
+    end,
     opts = {
       ensure_installed = {
         -- defaults
@@ -22,6 +60,7 @@ return {
         "lua",
         "vimdoc",
         "make",
+        "bash",
         "luadoc",
         "markdown",
         "markdown_inline",
