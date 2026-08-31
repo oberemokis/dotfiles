@@ -1,24 +1,21 @@
--- opencode: порт темы opencode (Zed) на base46
--- Источник значений: ~/.config/zed/themes/opencode.json, вариант "OpenCode" (dark)
-
 local M = {}
 
 M.base_30 = {
   white = "#eeeeee",
-  darker_black = "#141414", -- панели и всплывающие окна: в Zed они светлее редактора
-  black = "#0a0a0a", --  nvim bg
+  darker_black = "#141414",
+  black = "#0a0a0a",
   black2 = "#141414",
   one_bg = "#1e1e1e",
   one_bg2 = "#282828",
   one_bg3 = "#323232",
   grey = "#484848",
-  grey_fg = "#aeaeae", -- цвет комментариев в opencode
+  grey_fg = "#aeaeae",
   grey_fg2 = "#8a8a8a",
   light_grey = "#808080",
   red = "#e06c75",
   baby_pink = "#fec1dd",
   pink = "#f799c6",
-  line = "#282828", -- for lines like vertsplit
+  line = "#282828",
   green = "#96e3a7",
   vibrant_green = "#7fd88f",
   nord_blue = "#82b3f8",
@@ -69,6 +66,7 @@ M.polish_hl = {
     WinSeparator = { fg = M.base_30.line },
     CursorLineNr = { fg = M.base_30.white },
     LineNr = { fg = M.base_30.grey },
+    Comment = { fg = M.base_30.grey_fg },
     Title = { fg = M.base_30.pink, bold = true },
     Directory = { fg = M.base_30.orange },
     NonText = { fg = "#3c3c3c" },
@@ -102,7 +100,6 @@ M.polish_hl = {
   },
 
   treesitter = {
-    -- в opencode переменные, свойства и параметры остаются нейтральными
     ["@variable"] = { fg = M.base_16.base05 },
     ["@variable.parameter"] = { fg = M.base_16.base05 },
     ["@variable.member"] = { fg = M.base_16.base05 },
