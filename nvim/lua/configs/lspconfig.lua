@@ -14,7 +14,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- typescript | javascript | vue
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   -- on_init = on_init,
   -- capabilities = capabilities,
   init_options = {
